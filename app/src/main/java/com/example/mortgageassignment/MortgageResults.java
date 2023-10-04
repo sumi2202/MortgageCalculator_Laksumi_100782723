@@ -33,6 +33,13 @@ public class MortgageResults extends AppCompatActivity {
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.viridian));
         }
 
+        Button goingBack = findViewById(R.id.goBack);
+        goingBack.setOnClickListener((view) -> {
+            Intent i = new Intent(MortgageResults.this, MainActivity.class);
+            MortgageResults.this.onBackPressed();
+
+        });
+
         x_emi = (TextView)findViewById(R.id.EMI);
         x_tenure = (TextView)findViewById(R.id.tenure);
         x_loanAmount = (TextView)findViewById(R.id.loanAmount);
@@ -60,6 +67,8 @@ public class MortgageResults extends AppCompatActivity {
         String payment = dec.format(total);
         x_totalPayment.setText(String.valueOf(payment));
     }
+
+
 
 
 

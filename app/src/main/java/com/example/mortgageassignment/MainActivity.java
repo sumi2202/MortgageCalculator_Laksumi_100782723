@@ -47,14 +47,26 @@ public class MainActivity extends AppCompatActivity {
                 calculate(view);
             }
         });
+        Button clearButton = findViewById(R.id.buttonClear);
+        clearButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view){delete(view);}
+
+        });
     }
 
-//            Button clearButton = findViewById(R.id.buttonClear);
+
+
+        public void delete(View view){
+            principalAmount.setText("");
+            interest.setText("");
+            inYear.setText("");
+            inMonth.setText("");
+        }
 
 
 
-            public void calculate(View view) {
-                try {
+        public void calculate(View view) {
+            try {
                     double M_principalAmount = Double.parseDouble(principalAmount.getText().toString());
                     double M_interest = Double.parseDouble(interest.getText().toString());
                     int M_year = Integer.parseInt(inYear.getText().toString());
@@ -86,15 +98,5 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
-//        clearButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                principalAmount.setText("");
-//                interest.setText("");
-//                inYear.setText("");
-//                inMonth.setText("");
-//
-//
-//            }
-//        });
-    }
+
+}
