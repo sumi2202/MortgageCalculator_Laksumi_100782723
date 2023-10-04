@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Bundle;
+import java.text.DecimalFormat;
 
 public class MortgageResults extends AppCompatActivity {
     private TextView x_emi;
@@ -21,6 +22,7 @@ public class MortgageResults extends AppCompatActivity {
     private TextView x_loanAmount;
     private TextView x_interestPayable;
     private TextView x_totalPayment;
+    private static final DecimalFormat dec = new DecimalFormat("0.00");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +45,20 @@ public class MortgageResults extends AppCompatActivity {
         double interest = getIntent().getDoubleExtra("x_interestPayable", 0.0);
         double total = getIntent().getDoubleExtra("x_totalPayment", 0.0);
 
-        x_emi.setText(String.valueOf(emi1));
-        x_tenure.setText(String.valueOf(tenure1));
-        x_loanAmount.setText(String.valueOf(loan));
-        x_interestPayable.setText(String.valueOf(interest));
-        x_totalPayment.setText(String.valueOf(total));
+        String emi = dec.format(emi1);
+        x_emi.setText(String.valueOf(emi));
+
+        String tenu = dec.format(tenure1);
+        x_tenure.setText(String.valueOf(tenu));
+
+        String lAmount = dec.format(loan);
+        x_loanAmount.setText(String.valueOf(lAmount));
+
+        String payable = dec.format(interest);
+        x_interestPayable.setText(String.valueOf(payable));
+
+        String payment = dec.format(total);
+        x_totalPayment.setText(String.valueOf(payment));
     }
 
 
