@@ -22,8 +22,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText inYear;
     private EditText inMonth;
 
-
-
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +57,6 @@ public class MainActivity extends AppCompatActivity {
 
         });
     }
-
-
 
         // This method clears all text fields
         public void delete(View view){

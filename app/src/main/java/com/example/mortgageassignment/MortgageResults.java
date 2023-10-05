@@ -33,6 +33,7 @@ public class MortgageResults extends AppCompatActivity {
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.viridian));
         }
 
+        //Navigates back to the input page
         Button goingBack = findViewById(R.id.goBack);
         goingBack.setOnClickListener((view) -> {
             Intent i = new Intent(MortgageResults.this, MainActivity.class);
@@ -46,12 +47,14 @@ public class MortgageResults extends AppCompatActivity {
         x_interestPayable = (TextView)findViewById(R.id.intPayable);
         x_totalPayment = (TextView)findViewById(R.id.totalPayable);
 
+        //Obtains values calculated in MainActivity
         double emi1 = getIntent().getDoubleExtra("x_emi", 0.0);
         int tenure1 = getIntent().getIntExtra("x_tenure", 0);
         double loan = getIntent().getDoubleExtra("x_loanAmount", 0.0);
         double interest = getIntent().getDoubleExtra("x_interestPayable", 0.0);
         double total = getIntent().getDoubleExtra("x_totalPayment", 0.0);
 
+        //Decimal values are formatted and the results are displayed when Loan Summary button is clicked
         String emi = dec.format(emi1);
         x_emi.setText(String.valueOf(emi));
 
