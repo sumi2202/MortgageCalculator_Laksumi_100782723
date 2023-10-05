@@ -30,12 +30,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Allows users to input their principal amount, interest rate, year, and month
         principalAmount = (EditText)findViewById(R.id.principalAmount);
         interest = (EditText)findViewById(R.id.interest);
         inYear = (EditText)findViewById(R.id.year);
         inMonth = (EditText)findViewById(R.id.month);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            //Cosmetic purpose; It sets the task bar and status bar with the same colour as the colour
+            //theme I chose to work with
             getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.viridian));
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.viridian));
         }
@@ -56,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        // This method clears all text fields
         public void delete(View view){
             principalAmount.setText("");
             interest.setText("");
@@ -63,8 +67,7 @@ public class MainActivity extends AppCompatActivity {
             inMonth.setText("");
         }
 
-
-
+        // This method calculates everything given the user input.
         public void calculate(View view) {
             try {
                     double M_principalAmount = Double.parseDouble(principalAmount.getText().toString());
@@ -80,6 +83,11 @@ public class MainActivity extends AppCompatActivity {
                     double TotalInterest = sum * yearExchange - M_principalAmount;
                     double TotalPayment = M_principalAmount + TotalInterest;
 
+
+                    /*
+                    * This intent is implemented in the MainActivity class in order to pass the
+                    * calculated results on to the MortgageResults class.
+                    */
                     Intent i = new Intent(this, MortgageResults.class);
                     i.putExtra("x_emi", sum);
                     i.putExtra("x_tenure", yearExchange);
@@ -92,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 } catch (NumberFormatException e){
+                    // displays a popup when a field is left empty or certain format parameters aren't met
                     Toast.makeText(MainActivity.this, "Please enter a valid numeric value. Enter 0 when applicable.", Toast.LENGTH_SHORT).show();
                 }
 
