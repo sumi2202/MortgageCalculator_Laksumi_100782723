@@ -37,13 +37,16 @@ public class MainActivity extends AppCompatActivity {
         inMonth = (EditText)findViewById(R.id.month);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            //Cosmetic purpose; It sets the task bar and status bar with the same colour as the colour
-            //theme I chose to work with
+            /*Cosmetic purpose; It sets the task bar and status bar with the same colour as the colour
+            theme I chose to work with*/
             getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.viridian));
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.viridian));
         }
 
-
+        /*Initialize a button object and link it to the buttons on activity_main.xml.
+        loanSummaryButton is linked to buttonTotal and calls the calculate method in
+        order to calculate the values needed to display on the results page. clearButton is linked to
+        buttonClear and erases or clears values from the input field. */
         Button loanSummaryButton = findViewById(R.id.buttonTotal);
         loanSummaryButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
